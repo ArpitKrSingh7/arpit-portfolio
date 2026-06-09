@@ -10,7 +10,6 @@ type Category = {
 };
 
 const categories: Category[] = [
-  // ... Keep your categories array exactly as it was ...
   {
     label: "LANGUAGES",
     techs: [
@@ -137,20 +136,20 @@ function TechBadge({ tech }: { tech: Tech }) {
           {tech.iconText}
         </span>
       )}
-      <span>{tech.name}</span>
+      <span className="whitespace-nowrap">{tech.name}</span>
     </div>
   );
 }
 
 export default function TechStack() {
   return (
-    <section className="max-w-3xl mx-auto px-4 py-10">
+    <section className="max-w-4xl w-full mx-auto px-4 py-10">
       <div className="mb-6">
         <h2 className="text-xl font-semibold text-white">Tech Stack</h2>
         <p className="text-sm mt-1 text-white/40">Technologies I work with</p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {categories.map((cat) => (
           <div
             key={cat.label}

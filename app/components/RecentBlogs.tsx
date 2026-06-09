@@ -10,7 +10,6 @@ type Blog = {
   url: string;
 };
 
-// ... keep your `blogs`, `tagColors`, and `getTagStyle` exactly as they were ...
 const blogs: Blog[] = [
   {
     title: "Why Delivery Apps Stop Trusting Google Maps (And Build Their Own)",
@@ -56,7 +55,7 @@ function getTagStyle(tag: string) {
 
 export default function RecentBlogs() {
   return (
-    <section className="max-w-3xl mx-auto px-4 py-10">
+    <section className="max-w-4xl w-full mx-auto px-4 py-10">
       <div className="flex items-end justify-between mb-6">
         <div>
           <h2 className="text-xl font-semibold text-white">Recent Blogs</h2>
@@ -79,11 +78,11 @@ export default function RecentBlogs() {
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {blogs.map((blog) => (
           <div
             key={blog.title}
-            className="rounded-xl overflow-hidden flex flex-col transition-transform duration-200 hover:-translate-y-1 border border-white/[0.08] bg-white/[0.02]"
+            className="rounded-xl overflow-hidden flex flex-col border border-white/[0.08] bg-white/[0.02] transition-transform duration-200 hover:-translate-y-1"
           >
             <div className="w-full h-40 relative bg-[#111]">
               <img
@@ -97,7 +96,7 @@ export default function RecentBlogs() {
                   return (
                     <span
                       key={tag}
-                      className="text-[10px] px-2 py-0.5 rounded backdrop-blur-sm"
+                      className="text-[10px] px-2 py-0.5 rounded backdrop-blur-sm whitespace-nowrap"
                       style={{ backgroundColor: style.bg, color: style.text }}
                     >
                       {tag}
@@ -106,7 +105,6 @@ export default function RecentBlogs() {
                 })}
               </div>
             </div>
-
             <div className="p-4 flex flex-col flex-1 gap-2">
               <h3 className="text-sm font-semibold leading-snug text-white hover:text-blue-400 transition-colors cursor-pointer">
                 {blog.title}
@@ -114,7 +112,6 @@ export default function RecentBlogs() {
               <p className="text-xs leading-relaxed flex-1 text-white/55">
                 {blog.description}
               </p>
-
               <div className="flex items-center gap-3 mt-2 text-[11px] text-white/40">
                 <span className="flex items-center gap-1.5">
                   <svg

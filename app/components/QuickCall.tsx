@@ -1,11 +1,10 @@
 export default function QuickCall() {
   return (
-    <section className="max-w-3xl mx-auto px-4 py-10">
+    <section className="max-w-4xl w-full mx-auto px-4 py-10">
       <div
-        className="rounded-xl overflow-hidden flex flex-col md:flex-row"
+        className="rounded-xl overflow-hidden flex flex-col md:flex-row w-full"
         style={{ border: "1px solid rgba(255,255,255,0.08)" }}
       >
-        {/* Left Side: Pitch */}
         <div className="flex-1 p-8" style={{ backgroundColor: "#111111" }}>
           <span
             className="text-xs font-semibold tracking-widest"
@@ -17,7 +16,6 @@ export default function QuickCall() {
             Let&apos;s hop on a quick call and see if we&apos;ve got the{" "}
             <em className="text-gray-300">right chemistry.</em>
           </h2>
-
           <div className="space-y-5">
             <div>
               <h3
@@ -56,12 +54,10 @@ export default function QuickCall() {
           </div>
         </div>
 
-        {/* Right Side: CTA Action */}
         <div
           className="flex-1 p-8 flex flex-col items-center justify-center text-center"
           style={{ backgroundColor: "#0b1120" }}
         >
-          {/* Icon */}
           <div
             className="w-16 h-16 rounded-full flex items-center justify-center mb-4"
             style={{
@@ -83,7 +79,6 @@ export default function QuickCall() {
               />
             </svg>
           </div>
-
           <h3 className="text-lg font-semibold text-white mb-2">
             Ready to chat?
           </h3>
@@ -94,8 +89,6 @@ export default function QuickCall() {
             Schedule a free 30-minute strategy call to refine your idea and
             initiate our collaboration.
           </p>
-
-          {/* Color Dots */}
           <div className="flex gap-1.5 mb-6">
             <span
               className="w-1.5 h-1.5 rounded-full"
@@ -110,10 +103,8 @@ export default function QuickCall() {
               style={{ backgroundColor: "#fb923c" }}
             ></span>
           </div>
-
-          {/* Button */}
           <a
-            href="https://cal.com/" // Point to your actual cal.com link
+            href="https://cal.com/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105"
@@ -134,8 +125,6 @@ export default function QuickCall() {
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
             </svg>
           </a>
-
-          {/* Divider & Quote */}
           <div
             className="w-full mt-8 pt-6"
             style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}

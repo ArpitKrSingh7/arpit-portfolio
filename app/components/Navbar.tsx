@@ -29,20 +29,23 @@ export default function Navbar() {
 
   return (
     <header
-      className="w-full sticky top-0 z-50"
+      className="w-full sticky top-0 z-50 flex flex-col items-center"
       style={{ backgroundColor: "#0a0a0a" }}
     >
       {/* Top bar: clock + location */}
-      <div className="px-6 py-2">
-        <span className="text-xs font-mono" style={{ color: "#22d3ee" }}>
+      <div className="w-full px-4 py-4 flex justify-center overflow-hidden">
+        <span
+          className="text-xs font-mono truncate text-center"
+          style={{ color: "#22d3ee" }}
+        >
           {time} (GMT+5:30) Bihar Sharif, India
         </span>
       </div>
 
       {/* Nav links */}
-      <nav className="flex justify-center pb-3">
+      <nav className="flex justify-center pb-3 w-full px-4">
         <div
-          className="flex items-center gap-1 rounded-full px-2 py-1"
+          className="flex items-center gap-1 rounded-full px-2 py-1 max-w-full overflow-x-auto custom-scrollbar"
           style={{
             border: "1px solid rgba(255,255,255,0.1)",
             backgroundColor: "rgba(255,255,255,0.04)",
@@ -54,7 +57,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-4 py-1.5 rounded-full text-sm transition-colors duration-150"
+                className="px-4 py-1.5 rounded-full text-sm transition-colors duration-150 whitespace-nowrap"
                 style={{
                   backgroundColor: isActive
                     ? "rgba(255,255,255,0.1)"

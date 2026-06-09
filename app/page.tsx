@@ -15,11 +15,6 @@ export default function Home() {
       style={{ backgroundColor: "#0a0a0a" }}
     >
       <Navbar />
-
-      {/* 
-        The pb-10 adds a bit of padding at the bottom before the footer.
-        You can adjust the order of these sections if you want to switch things up!
-      */}
       <div className="flex flex-col gap-4 pb-10">
         <Intro />
         <TechStack />

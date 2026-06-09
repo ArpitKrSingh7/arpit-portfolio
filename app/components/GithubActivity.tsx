@@ -9,8 +9,6 @@ type ContributionDay = {
 };
 
 const GITHUB_USERNAME = "ArpitKrSingh7";
-
-// Color levels matching GitHub's contribution graph style (dark theme)
 const levelColors: Record<number, string> = {
   0: "rgba(255,255,255,0.06)",
   1: "#0e4429",
@@ -19,7 +17,6 @@ const levelColors: Record<number, string> = {
   4: "#39d353",
 };
 
-// Generate placeholder contribution data (replace with real API call if needed)
 function generatePlaceholderData(): {
   weeks: ContributionDay[][];
   total: number;
@@ -27,7 +24,6 @@ function generatePlaceholderData(): {
   const weeks: ContributionDay[][] = [];
   const today = new Date();
   let total = 0;
-
   for (let w = 51; w >= 0; w--) {
     const week: ContributionDay[] = [];
     for (let d = 0; d < 7; d++) {
@@ -51,7 +47,6 @@ function generatePlaceholderData(): {
     }
     weeks.push(week);
   }
-
   return { weeks, total };
 }
 
@@ -81,14 +76,10 @@ export default function GithubActivity() {
     y: number;
   } | null>(null);
 
-  useEffect(() => {
-    // In production, replace with real GitHub contribution API or a proxy
-    setData(generatePlaceholderData());
-  }, []);
+  useEffect(() => setData(generatePlaceholderData()), []);
 
   if (!data) return null;
 
-  // Get month labels: find first week of each month
   const monthLabels: { label: string; index: number }[] = [];
   data.weeks.forEach((week, wi) => {
     const firstDay = week.find((d) => d.date);
@@ -96,14 +87,12 @@ export default function GithubActivity() {
       const month = new Date(firstDay.date).getMonth();
       const prev =
         wi > 0 ? new Date(data.weeks[wi - 1][0].date).getMonth() : -1;
-      if (month !== prev) {
-        monthLabels.push({ label: MONTHS[month], index: wi });
-      }
+      if (month !== prev) monthLabels.push({ label: MONTHS[month], index: wi });
     }
   });
 
   return (
-    <section className="max-w-3xl mx-auto px-4 py-10">
+    <section className="max-w-4xl w-full mx-auto px-4 py-10 overflow-hidden">
       <div className="mb-6">
         <h2 className="text-xl font-semibold text-white">GitHub Activity</h2>
         <p className="text-sm mt-1" style={{ color: "rgba(255,255,255,0.4)" }}>
@@ -112,70 +101,73 @@ export default function GithubActivity() {
       </div>
 
       <div
-        className="rounded-xl p-5 overflow-x-auto"
+        className="w-full rounded-xl p-5 overflow-x-auto custom-scrollbar relative"
         style={{
           border: "1px solid rgba(255,255,255,0.08)",
           backgroundColor: "rgba(255,255,255,0.02)",
         }}
       >
-        {/* Month labels */}
-        <div className="flex mb-1 ml-0" style={{ gap: "3px" }}>
-          {data.weeks.map((_, wi) => {
-            const label = monthLabels.find((m) => m.index === wi);
-            return (
-              <div key={wi} className="flex-shrink-0" style={{ width: "11px" }}>
-                {label && (
-                  <span
-                    className="text-xs whitespace-nowrap"
-                    style={{ color: "rgba(255,255,255,0.3)", fontSize: "10px" }}
-                  >
-                    {label.label}
-                  </span>
-                )}
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Grid */}
-        <div className="flex" style={{ gap: "3px" }}>
-          {data.weeks.map((week, wi) => (
-            <div
-              key={wi}
-              className="flex flex-col flex-shrink-0"
-              style={{ gap: "3px" }}
-            >
-              {week.map((day, di) => (
+        <div className="min-w-max">
+          <div className="flex mb-1 ml-0" style={{ gap: "3px" }}>
+            {data.weeks.map((_, wi) => {
+              const label = monthLabels.find((m) => m.index === wi);
+              return (
                 <div
-                  key={di}
-                  className="rounded-sm cursor-pointer transition-opacity duration-100"
-                  style={{
-                    width: "11px",
-                    height: "11px",
-                    backgroundColor: levelColors[day.level],
-                  }}
-                  onMouseEnter={(e) => {
-                    const rect = e.currentTarget.getBoundingClientRect();
-                    setTooltip({
-                      text: `${day.count} contributions on ${day.date}`,
-                      x: rect.left,
-                      y: rect.top - 28,
-                    });
-                  }}
-                  onMouseLeave={() => setTooltip(null)}
-                />
-              ))}
-            </div>
-          ))}
+                  key={wi}
+                  className="flex-shrink-0"
+                  style={{ width: "11px" }}
+                >
+                  {label && (
+                    <span
+                      className="text-xs whitespace-nowrap"
+                      style={{
+                        color: "rgba(255,255,255,0.3)",
+                        fontSize: "10px",
+                      }}
+                    >
+                      {label.label}
+                    </span>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+          <div className="flex" style={{ gap: "3px" }}>
+            {data.weeks.map((week, wi) => (
+              <div
+                key={wi}
+                className="flex flex-col flex-shrink-0"
+                style={{ gap: "3px" }}
+              >
+                {week.map((day, di) => (
+                  <div
+                    key={di}
+                    className="rounded-sm cursor-pointer transition-opacity duration-100"
+                    style={{
+                      width: "11px",
+                      height: "11px",
+                      backgroundColor: levelColors[day.level],
+                    }}
+                    onMouseEnter={(e) => {
+                      const rect = e.currentTarget.getBoundingClientRect();
+                      setTooltip({
+                        text: `${day.count} contributions on ${day.date}`,
+                        x: rect.left,
+                        y: rect.top - 28,
+                      });
+                    }}
+                    onMouseLeave={() => setTooltip(null)}
+                  />
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
-
-        {/* Total */}
-        <p className="mt-3 text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>
+        <p className="mt-4 text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>
           {data.total.toLocaleString()} contributions in the last year
         </p>
       </div>
 
-      {/* Tooltip */}
       {tooltip && (
         <div
           className="fixed z-50 px-2 py-1 rounded text-xs pointer-events-none"
@@ -192,7 +184,6 @@ export default function GithubActivity() {
         </div>
       )}
 
-      {/* Link to GitHub */}
       <div className="mt-3 text-right">
         <a
           href={`https://github.com/${GITHUB_USERNAME}`}

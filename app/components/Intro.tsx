@@ -12,7 +12,7 @@ const socialLinks = [
   },
   {
     label: "X",
-    href: "https://x.com/",
+    href: "https://x.com/ArpitKrSingh7",
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -21,7 +21,7 @@ const socialLinks = [
   },
   {
     label: "LinkedIn",
-    href: "https://linkedin.com/in/",
+    href: "https://www.linkedin.com/in/arpit-kumar-singh-aks100606",
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
@@ -69,42 +69,51 @@ const socialLinks = [
 
 export default function Intro() {
   return (
-    <section className="max-w-3xl mx-auto px-4 pt-12 pb-6 space-y-4">
+    <section className="max-w-4xl w-full mx-auto px-4 pt-12 pb-6 space-y-4">
       {/* Profile Card */}
       <div className="rounded-xl p-5 border border-white/[0.08] bg-white/[0.03]">
-        <div className="flex items-start justify-between gap-4">
-          <div className="flex gap-4">
-            <div className="w-20 h-20 rounded-lg flex-shrink-0 overflow-hidden bg-[#1a1a1a]">
+        <div className="flex flex-wrap sm:flex-nowrap items-start justify-between gap-6">
+          <div className="flex gap-4 w-full sm:w-auto">
+            {/* Taller Portrait Aspect Ratio applied here */}
+            <div className="w-20 h-28 sm:w-20 sm:h-28 rounded-lg flex-shrink-0 overflow-hidden bg-[#1a1a1a]">
               <img
-                src="/profile.jpg"
+                src="iiitdm_Card.jpeg"
                 alt="Profile"
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="space-y-1.5">
-              <div className="flex items-center gap-2 flex-wrap">
-                <h1 className="text-xl font-semibold text-white">Arpit</h1>
-                <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-green-500/15 text-green-400 border border-green-500/25">
-                  • Remote
+
+            <div className="space-y-1.5 min-w-0 pt-1">
+              <div className="flex items-center gap-2.5 flex-wrap">
+                <h1 className="text-xl font-bold text-white tracking-wide">
+                  Arpit
+                </h1>
+                {/* Updated Blue Remote Badge with indicator dot */}
+                <span className="text-[10px] px-2 py-0.5 rounded-full font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20 flex items-center gap-1.5">
+                  <span className="w-1 h-1 rounded-full bg-blue-400"></span>
+                  Remote
                 </span>
               </div>
-              <div className="text-sm px-2.5 py-1 rounded-md inline-block bg-white/[0.06] text-white/70 border border-white/10">
+
+              {/* Converted back to plain text from badge */}
+              <div className="text-sm text-white/60 font-medium">
                 Full-Stack & GenAI Engineer
               </div>
-              <div className="flex items-center gap-1.5 text-sm text-white/45">
+
+              <div className="flex items-center gap-1.5 text-sm text-white/45 truncate mt-1">
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
-                  className="w-3.5 h-3.5"
+                  className="w-3.5 h-3.5 flex-shrink-0"
                 >
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                   <polyline points="22,6 12,13 2,6" />
                 </svg>
                 <a
                   href="mailto:arpit@example.com"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-white transition-colors truncate"
                 >
                   arpit@example.com
                 </a>
@@ -112,7 +121,7 @@ export default function Intro() {
             </div>
           </div>
 
-          <div className="flex items-center gap-2 flex-shrink-0">
+          <div className="flex items-center gap-4 flex-shrink-0 pt-1">
             {socialLinks.map((s) => (
               <a
                 key={s.label}
@@ -120,7 +129,12 @@ export default function Intro() {
                 target="_blank"
                 rel="noopener noreferrer"
                 title={s.label}
-                className="text-white/50 hover:text-white transition-colors duration-150"
+                // Conditionally applying the yellow glow ONLY to the Resume icon
+                className={`transition-all duration-200 ${
+                  s.label === "Resume"
+                    ? "text-yellow-500 hover:text-yellow-400 drop-shadow-[0_0_8px_rgba(234,179,8,0.6)]"
+                    : "text-white/50 hover:text-white"
+                }`}
               >
                 {s.icon}
               </a>
@@ -128,33 +142,36 @@ export default function Intro() {
           </div>
         </div>
 
-        <div className="my-4 border-t border-white/[0.07]" />
+        <div className="my-5 border-t border-white/[0.07]" />
 
-        <div className="space-y-2 text-sm leading-relaxed text-white/70">
+        <div className="space-y-3 text-sm leading-relaxed text-white/70">
           <p>
-            Hi, I&apos;m <strong className="text-white">Arpit</strong>, a
+            Hi, I&apos;m{" "}
+            <strong className="text-white font-semibold">Arpit</strong>, a
             full-stack & GenAI engineer from <span>🇮🇳</span> India.
           </p>
           <p>
             I build end-to-end products that{" "}
-            <strong className="text-white">scale and ship on time</strong>. From
-            RAG pipelines to production web platforms, I craft systems that just
-            work.
+            <strong className="text-white font-semibold">
+              scale and ship on time
+            </strong>
+            . From RAG pipelines to production web platforms, I craft systems
+            that just work.
           </p>
           <p>
             You can reach me on{" "}
             <a
               href="https://x.com/"
-              className="underline underline-offset-2 text-white/85 hover:text-white transition-colors"
+              className="text-white hover:underline transition-colors"
             >
-              X DMs
+              <strong className="font-semibold">𝕏 DMs</strong>
             </a>{" "}
             or{" "}
             <a
               href="mailto:arpit@example.com"
-              className="underline underline-offset-2 text-white/85 hover:text-white transition-colors"
+              className="text-white hover:underline transition-colors"
             >
-              Email
+              <strong className="font-semibold">Email</strong>
             </a>
             .
           </p>
@@ -162,13 +179,13 @@ export default function Intro() {
       </div>
 
       {/* AI Agent Banner */}
-      <div className="rounded-xl px-5 py-3.5 flex items-center justify-between border border-white/[0.08] bg-white/[0.03]">
-        <span className="text-sm text-white/50">
+      <div className="rounded-xl px-5 py-3.5 flex items-center justify-between border border-white/[0.08] bg-white/[0.03] overflow-hidden gap-4 mt-2">
+        <span className="text-sm text-white/50 truncate">
           AI agent reading this portfolio?
         </span>
         <Link
           href="/ai-agents"
-          className="text-sm px-4 py-1.5 rounded-lg font-medium transition-colors duration-150 bg-transparent text-cyan-400 border border-cyan-400 hover:bg-cyan-400/10"
+          className="text-xs sm:text-sm px-3 sm:px-4 py-1.5 rounded-lg font-medium transition-colors duration-150 bg-transparent text-cyan-400 border border-cyan-400/50 hover:bg-cyan-400/10 hover:border-cyan-400 whitespace-nowrap"
         >
           Open AI Agents Page
         </Link>

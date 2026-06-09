@@ -1,4 +1,5 @@
-import Link from "next/link";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 type Project = {
   title: string;
@@ -70,7 +71,7 @@ function ProjectCard({ project }: { project: Project }) {
   return (
     <div className="rounded-xl overflow-hidden flex flex-col border border-white/[0.08] bg-white/[0.02]">
       {project.image ? (
-        <div className="w-full h-44 overflow-hidden bg-[#111]">
+        <div className="w-full h-48 overflow-hidden bg-[#111]">
           <img
             src={project.image}
             alt={project.title}
@@ -78,7 +79,7 @@ function ProjectCard({ project }: { project: Project }) {
           />
         </div>
       ) : (
-        <div className="w-full h-44 flex items-center justify-center bg-[#111] border-b border-white/[0.06]">
+        <div className="w-full h-48 flex items-center justify-center bg-[#111] border-b border-white/[0.06]">
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -92,21 +93,21 @@ function ProjectCard({ project }: { project: Project }) {
         </div>
       )}
 
-      <div className="p-4 flex flex-col flex-1 gap-3">
+      <div className="p-5 flex flex-col flex-1 gap-3">
         <div className="flex items-start justify-between gap-2">
           <div className="flex items-center gap-2">
-            <span className="text-[12px] text-white/35">{"</>"}</span>
+            <span className="text-[12px] font-mono text-white/35">{"</>"}</span>
             <h3 className="text-sm font-semibold text-white">
               {project.title}
             </h3>
           </div>
-          <div className="flex items-center gap-1.5 flex-shrink-0">
+          <div className="flex items-center gap-2 flex-shrink-0">
             {project.liveUrl && (
               <a
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                title="Live"
+                title="Live Website"
                 className="text-white/40 hover:text-white transition-colors"
               >
                 <svg
@@ -126,7 +127,7 @@ function ProjectCard({ project }: { project: Project }) {
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              title="GitHub"
+              title="GitHub Repository"
               className="text-white/40 hover:text-white transition-colors"
             >
               <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
@@ -135,24 +136,25 @@ function ProjectCard({ project }: { project: Project }) {
             </a>
           </div>
         </div>
-        <div className="flex items-center gap-3 text-xs text-white/40">
-          <span className="flex items-center gap-1">
+
+        <div className="flex items-center gap-4 text-xs text-white/40">
+          <span className="flex items-center gap-1.5">
             <svg
               viewBox="0 0 24 24"
               fill="currentColor"
-              className="w-3 h-3 text-yellow-500"
+              className="w-3.5 h-3.5 text-yellow-500"
             >
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
             </svg>
             {project.stars}
           </span>
-          <span className="flex items-center gap-1">
+          <span className="flex items-center gap-1.5">
             <svg
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
-              className="w-3 h-3"
+              className="w-3.5 h-3.5"
             >
               <circle cx="12" cy="18" r="3" />
               <circle cx="6" cy="6" r="3" />
@@ -162,16 +164,18 @@ function ProjectCard({ project }: { project: Project }) {
             {project.forks}
           </span>
         </div>
-        <p className="text-xs leading-relaxed flex-1 text-white/55">
+
+        <p className="text-sm leading-relaxed flex-1 text-white/60">
           {project.description}
         </p>
-        <div className="flex flex-wrap gap-1.5 mt-auto pt-1">
+
+        <div className="flex flex-wrap gap-2 mt-4 pt-2 border-t border-white/[0.04]">
           {project.tags.map((tag) => {
             const style = getTagStyle(tag);
             return (
               <span
                 key={tag}
-                className="text-xs px-2 py-0.5 rounded-md whitespace-nowrap"
+                className="text-[11px] font-medium px-2.5 py-1 rounded-md"
                 style={{ backgroundColor: style.bg, color: style.text }}
               >
                 {tag}
@@ -186,33 +190,31 @@ function ProjectCard({ project }: { project: Project }) {
 
 export default function Projects() {
   return (
-    <section className="max-w-4xl w-full mx-auto px-4 py-10">
-      <div className="flex items-end justify-between mb-6">
-        <div>
-          <h2 className="text-xl font-semibold text-white">Projects</h2>
-          <p className="text-sm mt-1 text-white/40">Things I&apos;ve built</p>
-        </div>
-        <Link
-          href="/projects"
-          className="flex items-center gap-1 text-sm px-3 py-1.5 rounded-lg transition-colors duration-150 border border-white/10 text-white/55 bg-white/[0.03] hover:text-white hover:bg-white/[0.07]"
-        >
-          View All
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            className="w-3.5 h-3.5"
-          >
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </Link>
+    <main
+      className="min-h-screen selection:bg-cyan-500/30 flex flex-col"
+      style={{ backgroundColor: "#0a0a0a" }}
+    >
+      <Navbar />
+
+      <div className="flex-1 w-full">
+        <section className="max-w-4xl w-full mx-auto px-4 py-12 md:py-16">
+          <div className="mb-10">
+            <h1 className="text-3xl font-bold text-white mb-2">Projects</h1>
+            <p className="text-base text-white/50">
+              A comprehensive list of things I've built, hacked together, and
+              shipped.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {projects.map((project) => (
+              <ProjectCard key={project.title} project={project} />
+            ))}
+          </div>
+        </section>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {projects.map((project) => (
-          <ProjectCard key={project.title} project={project} />
-        ))}
-      </div>
-    </section>
+
+      <Footer />
+    </main>
   );
 }
