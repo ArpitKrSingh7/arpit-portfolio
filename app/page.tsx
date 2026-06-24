@@ -1,9 +1,9 @@
-import Image from "next/image";
 import Navbar from "./components/Navbar";
 import Intro from "./components/Intro";
 import TechStack from "./components/TechStack";
 import Projects from "./components/Projects";
 import GithubActivity from "./components/GithubActivity";
+import LeetCodeStats from "./components/LeetCodeStats";
 import RecentBlogs from "./components/RecentBlogs";
 import QuickCall from "./components/QuickCall";
 import Footer from "./components/Footer";
@@ -20,6 +20,7 @@ export default function Home() {
         <TechStack />
         <Projects />
         <GithubActivity />
+        <LeetCodeStats />
         <RecentBlogs />
         <QuickCall />
       </div>

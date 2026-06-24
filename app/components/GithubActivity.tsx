@@ -1,206 +1,94 @@
-"use client";
-
-import { useEffect, useState } from "react";
-
-type ContributionDay = {
-  date: string;
-  count: number;
-  level: 0 | 1 | 2 | 3 | 4;
-};
+import { fetchGitHubProfile, fetchContributions } from "../lib/github";
+import GithubActivityClient, { type ContributionDay } from "./GithubActivityClient";
 
 const GITHUB_USERNAME = "ArpitKrSingh7";
-const levelColors: Record<number, string> = {
-  0: "rgba(255,255,255,0.06)",
-  1: "#0e4429",
-  2: "#006d32",
-  3: "#26a641",
-  4: "#39d353",
-};
 
-function generatePlaceholderData(): {
+function getLast52Weeks(contributions: { date: string; count: number; level: number }[]): {
   weeks: ContributionDay[][];
   total: number;
+  longestStreak: number;
+  currentStreak: number;
 } {
-  const weeks: ContributionDay[][] = [];
   const today = new Date();
+  const byDate: Record<string, { count: number; level: number }> = {};
+  contributions.forEach((c) => {
+    byDate[c.date] = { count: c.count, level: c.level };
+  });
+
+  const weeks: ContributionDay[][] = [];
   let total = 0;
+
+  // Align to the most recent Sunday for a clean GitHub-style grid
+  const currentSunday = new Date(today);
+  const dayOfWeek = currentSunday.getDay();
+  currentSunday.setDate(currentSunday.getDate() - dayOfWeek);
+
   for (let w = 51; w >= 0; w--) {
     const week: ContributionDay[] = [];
+    const weekStart = new Date(currentSunday);
+    weekStart.setDate(weekStart.getDate() - w * 7);
+
     for (let d = 0; d < 7; d++) {
-      const date = new Date(today);
-      date.setDate(date.getDate() - (w * 7 + (6 - d)));
-      const count = Math.random() > 0.3 ? Math.floor(Math.random() * 12) : 0;
-      total += count;
+      const date = new Date(weekStart);
+      date.setDate(date.getDate() + d);
+      const dateStr = date.toISOString().split("T")[0];
+      const entry = byDate[dateStr] || { count: 0, level: 0 };
+      total += entry.count;
       week.push({
-        date: date.toISOString().split("T")[0],
-        count,
-        level: (count === 0
-          ? 0
-          : count < 3
-            ? 1
-            : count < 6
-              ? 2
-              : count < 9
-                ? 3
-                : 4) as 0 | 1 | 2 | 3 | 4,
+        date: dateStr,
+        count: entry.count,
+        level: Math.min(4, Math.max(0, entry.level)) as 0 | 1 | 2 | 3 | 4,
       });
     }
     weeks.push(week);
   }
-  return { weeks, total };
-}
 
-const MONTHS = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
+  // Compute streaks from all flat days in last 52 weeks
+  const flatDays = weeks.flat();
+  let longestStreak = 0;
+  let currentStreak = 0;
+  let tempStreak = 0;
 
-export default function GithubActivity() {
-  const [data, setData] = useState<{
-    weeks: ContributionDay[][];
-    total: number;
-  } | null>(null);
-  const [tooltip, setTooltip] = useState<{
-    text: string;
-    x: number;
-    y: number;
-  } | null>(null);
-
-  useEffect(() => setData(generatePlaceholderData()), []);
-
-  if (!data) return null;
-
-  const monthLabels: { label: string; index: number }[] = [];
-  data.weeks.forEach((week, wi) => {
-    const firstDay = week.find((d) => d.date);
-    if (firstDay) {
-      const month = new Date(firstDay.date).getMonth();
-      const prev =
-        wi > 0 ? new Date(data.weeks[wi - 1][0].date).getMonth() : -1;
-      if (month !== prev) monthLabels.push({ label: MONTHS[month], index: wi });
+  flatDays.forEach((day) => {
+    if (day.count > 0) {
+      tempStreak += 1;
+      longestStreak = Math.max(longestStreak, tempStreak);
+    } else {
+      tempStreak = 0;
     }
   });
 
+  // Current streak: count backwards from today until a gap
+  const reversed = [...flatDays].reverse();
+  for (const day of reversed) {
+    if (day.count > 0) {
+      currentStreak += 1;
+    } else if (day.date !== today.toISOString().split("T")[0]) {
+      break;
+    }
+  }
+
+  return { weeks, total, longestStreak, currentStreak };
+}
+
+export default async function GithubActivity() {
+  const [profile, contributions] = await Promise.all([
+    fetchGitHubProfile(),
+    fetchContributions(),
+  ]);
+
+  const { weeks, total, longestStreak, currentStreak } = getLast52Weeks(contributions);
+
   return (
-    <section className="max-w-4xl w-full mx-auto px-4 py-10 overflow-hidden">
-      <div className="mb-6">
-        <h2 className="text-xl font-semibold text-white">GitHub Activity</h2>
-        <p className="text-sm mt-1" style={{ color: "rgba(255,255,255,0.4)" }}>
-          My contribution graph
-        </p>
-      </div>
-
-      <div
-        className="w-full rounded-xl p-5 overflow-x-auto custom-scrollbar relative"
-        style={{
-          border: "1px solid rgba(255,255,255,0.08)",
-          backgroundColor: "rgba(255,255,255,0.02)",
-        }}
-      >
-        <div className="min-w-max">
-          <div className="flex mb-1 ml-0" style={{ gap: "3px" }}>
-            {data.weeks.map((_, wi) => {
-              const label = monthLabels.find((m) => m.index === wi);
-              return (
-                <div
-                  key={wi}
-                  className="flex-shrink-0"
-                  style={{ width: "11px" }}
-                >
-                  {label && (
-                    <span
-                      className="text-xs whitespace-nowrap"
-                      style={{
-                        color: "rgba(255,255,255,0.3)",
-                        fontSize: "10px",
-                      }}
-                    >
-                      {label.label}
-                    </span>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-          <div className="flex" style={{ gap: "3px" }}>
-            {data.weeks.map((week, wi) => (
-              <div
-                key={wi}
-                className="flex flex-col flex-shrink-0"
-                style={{ gap: "3px" }}
-              >
-                {week.map((day, di) => (
-                  <div
-                    key={di}
-                    className="rounded-sm cursor-pointer transition-opacity duration-100"
-                    style={{
-                      width: "11px",
-                      height: "11px",
-                      backgroundColor: levelColors[day.level],
-                    }}
-                    onMouseEnter={(e) => {
-                      const rect = e.currentTarget.getBoundingClientRect();
-                      setTooltip({
-                        text: `${day.count} contributions on ${day.date}`,
-                        x: rect.left,
-                        y: rect.top - 28,
-                      });
-                    }}
-                    onMouseLeave={() => setTooltip(null)}
-                  />
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
-        <p className="mt-4 text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>
-          {data.total.toLocaleString()} contributions in the last year
-        </p>
-      </div>
-
-      {tooltip && (
-        <div
-          className="fixed z-50 px-2 py-1 rounded text-xs pointer-events-none"
-          style={{
-            left: tooltip.x,
-            top: tooltip.y,
-            backgroundColor: "#1a1a1a",
-            border: "1px solid rgba(255,255,255,0.15)",
-            color: "rgba(255,255,255,0.85)",
-            transform: "translateX(-50%)",
-          }}
-        >
-          {tooltip.text}
-        </div>
-      )}
-
-      <div className="mt-3 text-right">
-        <a
-          href={`https://github.com/${GITHUB_USERNAME}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-xs transition-colors duration-150"
-          style={{ color: "rgba(255,255,255,0.35)" }}
-          onMouseEnter={(e) =>
-            (e.currentTarget.style.color = "rgba(255,255,255,0.7)")
-          }
-          onMouseLeave={(e) =>
-            (e.currentTarget.style.color = "rgba(255,255,255,0.35)")
-          }
-        >
-          @{GITHUB_USERNAME} on GitHub →
-        </a>
-      </div>
-    </section>
+    <GithubActivityClient
+      weeks={weeks}
+      total={total}
+      longestStreak={longestStreak}
+      currentStreak={currentStreak}
+      username={GITHUB_USERNAME}
+      profileUrl={`https://github.com/${GITHUB_USERNAME}`}
+      publicRepos={profile?.public_repos ?? 0}
+      followers={profile?.followers ?? 0}
+    />
   );
 }

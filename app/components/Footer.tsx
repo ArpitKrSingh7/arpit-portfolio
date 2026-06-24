@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { personal, socialLinks } from "../lib/data";
 
 export default function Footer() {
   return (
@@ -11,9 +12,9 @@ export default function Footer() {
     >
       <div className="max-w-4xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-3 gap-8 text-sm">
         <div>
-          <h4 className="font-semibold text-white mb-1">Arpit</h4>
+          <h4 className="font-semibold text-white mb-1">{personal.name}</h4>
           <p style={{ color: "rgba(255,255,255,0.5)" }}>
-            Full-Stack Engineer building scalable systems.
+            Full-Stack & GenAI Engineer building scalable systems.
           </p>
         </div>
         <div className="flex flex-col gap-2">
@@ -32,23 +33,16 @@ export default function Footer() {
             Projects
           </Link>
           <Link
-            href="/sitemap"
+            href="/ai-agents"
             className="transition-colors hover:text-white"
             style={{ color: "rgba(255,255,255,0.5)" }}
           >
-            Sitemap
+            AI Agents
           </Link>
-          <a
-            href="/rss.xml"
-            className="transition-colors hover:text-white"
-            style={{ color: "rgba(255,255,255,0.5)" }}
-          >
-            RSS
-          </a>
         </div>
         <div className="flex sm:justify-end gap-4">
           <a
-            href="https://github.com/ArpitKrSingh7"
+            href={socialLinks.github}
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: "rgba(255,255,255,0.5)" }}
@@ -59,18 +53,18 @@ export default function Footer() {
             </svg>
           </a>
           <a
-            href="https://linkedin.com/"
+            href={socialLinks.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: "rgba(255,255,255,0.5)" }}
             className="hover:text-white transition-colors"
           >
             <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
             </svg>
           </a>
           <a
-            href="https://x.com/"
+            href={socialLinks.x}
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: "rgba(255,255,255,0.5)" }}
@@ -80,6 +74,17 @@ export default function Footer() {
               <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
             </svg>
           </a>
+          <a
+            href={socialLinks.leetcode}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "rgba(255,255,255,0.5)" }}
+            className="hover:text-white transition-colors"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+              <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0 0 7.293l3.854 4.126 5.406 5.788a1.374 1.374 0 0 0 1.006.441h.002a1.376 1.376 0 0 0 1.004-.441l6.187-6.626c.54-.578.54-1.494 0-2.072l-1.276-1.367a1.369 1.369 0 0 0-1.956 0l-3.381 3.62a.56.56 0 0 1-.414.178h-.002a.564.564 0 0 1-.416-.178l-3.381-3.62a1.372 1.372 0 0 1 0-1.919l4.834-5.177a1.37 1.37 0 0 1 1.001-.436c.383 0 .737.153 1.001.436l6.187 6.626a1.376 1.376 0 0 0 1.956 0l1.276-1.367a1.369 1.369 0 0 0 0-1.92L14.45.437A1.374 1.374 0 0 0 13.483 0z" />
+            </svg>
+          </a>
         </div>
       </div>
       <div
@@ -87,7 +92,7 @@ export default function Footer() {
         style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}
       >
         <p className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>
-          © 2026 Arpit
+          © {new Date().getFullYear()} {personal.shortName}
         </p>
       </div>
     </footer>

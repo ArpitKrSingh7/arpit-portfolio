@@ -1,3 +1,5 @@
+import { personal, socialLinks } from "../lib/data";
+
 export default function QuickCall() {
   return (
     <section className="max-w-4xl w-full mx-auto px-4 py-10">
@@ -25,7 +27,7 @@ export default function QuickCall() {
                 Want to bounce ideas?
               </h3>
               <p className="text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
-                Let&apos;s jump on a quick call and explore what&apos;s
+                Drop me an email or DM on X and let&apos;s explore what&apos;s
                 possible.
               </p>
             </div>
@@ -75,7 +77,7 @@ export default function QuickCall() {
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.896-1.596-5.48-4.18-7.076-7.076l1.293-.97c.362-.271.527-.733.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
+                d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
               />
             </svg>
           </div>
@@ -86,8 +88,7 @@ export default function QuickCall() {
             className="text-sm px-4 mb-6"
             style={{ color: "rgba(255,255,255,0.6)" }}
           >
-            Schedule a free 30-minute strategy call to refine your idea and
-            initiate our collaboration.
+            Send me an email or reach out on X. I usually respond within a day.
           </p>
           <div className="flex gap-1.5 mb-6">
             <span
@@ -103,28 +104,50 @@ export default function QuickCall() {
               style={{ backgroundColor: "#fb923c" }}
             ></span>
           </div>
-          <a
-            href="https://cal.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105"
-            style={{
-              backgroundColor: "rgba(255,255,255,0.05)",
-              color: "#fff",
-              border: "1px solid rgba(255,255,255,0.1)",
-            }}
-          >
-            Book a Free Call
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#2dd4bf"
-              strokeWidth="2"
-              className="w-4 h-4"
+          <div className="flex flex-col sm:flex-row gap-3">
+            <a
+              href={`mailto:${personal.email}`}
+              className="flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105"
+              style={{
+                backgroundColor: "rgba(255,255,255,0.05)",
+                color: "#fff",
+                border: "1px solid rgba(255,255,255,0.1)",
+              }}
             >
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-            </svg>
-          </a>
+              Email Me
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#2dd4bf"
+                strokeWidth="2"
+                className="w-4 h-4"
+              >
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+            </a>
+            <a
+              href={socialLinks.x}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105"
+              style={{
+                backgroundColor: "rgba(255,255,255,0.05)",
+                color: "#fff",
+                border: "1px solid rgba(255,255,255,0.1)",
+              }}
+            >
+              Message on X
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="w-4 h-4"
+                style={{ color: "#38bdf8" }}
+              >
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </a>
+          </div>
           <div
             className="w-full mt-8 pt-6"
             style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
@@ -133,8 +156,8 @@ export default function QuickCall() {
               className="text-xs italic font-serif"
               style={{ color: "rgba(255,255,255,0.4)" }}
             >
-              "Turning your vision into digital reality is just one conversation
-              away"
+              &ldquo;Turning your vision into digital reality is just one conversation
+              away&rdquo;
             </p>
           </div>
         </div>

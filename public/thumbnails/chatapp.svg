@@ -1,0 +1,23 @@
+<svg width="800" height="450" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="caGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#022c22;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="caIcon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2dd4bf;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#34d399;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#caGrad)"/>
+  <rect x="250" y="110" width="300" height="220" rx="16" fill="rgba(0,0,0,0.25)" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+  <rect x="270" y="140" width="180" height="34" rx="8" fill="rgba(45,212,191,0.12)"/>
+  <rect x="350" y="186" width="170" height="34" rx="8" fill="rgba(255,255,255,0.08)"/>
+  <rect x="270" y="232" width="150" height="34" rx="8" fill="rgba(45,212,191,0.12)"/>
+  <rect x="310" y="278" width="120" height="34" rx="8" fill="rgba(255,255,255,0.08)"/>
+  <circle cx="278" cy="157" r="4" fill="url(#caIcon)"/>
+  <circle cx="360" cy="203" r="4" fill="rgba(255,255,255,0.4)"/>
+  <circle cx="278" cy="249" r="4" fill="url(#caIcon)"/>
+  <circle cx="320" cy="295" r="4" fill="rgba(255,255,255,0.4)"/>
+  <text x="400" y="375" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="system-ui, sans-serif" font-size="28" font-weight="600">Real-Time Chat App</text>
+</svg>

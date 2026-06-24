@@ -1,0 +1,19 @@
+<svg width="800" height="450" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ttGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#450a0a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="ttIcon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f87171;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fbbf24;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#ttGrad)"/>
+  <rect x="280" y="130" width="240" height="150" rx="20" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+  <path d="M370 180l50 25-50 25z" fill="url(#ttIcon)" opacity="0.9"/>
+  <path d="M340 215c0 0 30 40 80 40" stroke="url(#ttIcon)" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.5"/>
+  <circle cx="420" cy="255" r="18" fill="none" stroke="url(#ttIcon)" stroke-width="4" opacity="0.7"/>
+  <path d="M430 246l-12 18h24l-12-18z" fill="url(#ttIcon)" opacity="0.8" transform="translate(0,0)"/>
+  <text x="400" y="340" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="system-ui, sans-serif" font-size="28" font-weight="600">TubeTalkAI</text>
+</svg>

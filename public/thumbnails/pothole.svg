@@ -1,0 +1,23 @@
+<svg width="800" height="450" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="phGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#064e3b;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="phIcon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#34d399;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#22d3ee;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#phGrad)"/>
+  <path d="M120 320h560" stroke="rgba(255,255,255,0.1)" stroke-width="16" stroke-linecap="round"/>
+  <path d="M120 320h180M500 320h180" stroke="url(#phIcon)" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+  <path d="M360 310c-20 0-36 12-40 28h80c-4-16-20-28-40-28z" fill="#1f2937" stroke="url(#phIcon)" stroke-width="3"/>
+  <rect x="250" y="200" width="120" height="70" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+  <circle cx="270" cy="220" r="4" fill="url(#phIcon)" opacity="0.8"/>
+  <circle cx="270" cy="235" r="4" fill="url(#phIcon)" opacity="0.6"/>
+  <circle cx="270" cy="250" r="4" fill="url(#phIcon)" opacity="0.4"/>
+  <path d="M290 220h60M290 235h50M290 250h40" stroke="rgba(255,255,255,0.3)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M480 230l-40 40M460 210l-20 60M500 250l-60 20" stroke="url(#phIcon)" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
+  <text x="400" y="390" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="system-ui, sans-serif" font-size="28" font-weight="600">Pothole Detection</text>
+</svg>

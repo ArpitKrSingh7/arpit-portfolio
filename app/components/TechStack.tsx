@@ -6,12 +6,14 @@ type Tech = {
 
 type Category = {
   label: string;
+  icon: string;
   techs: Tech[];
 };
 
 const categories: Category[] = [
   {
     label: "LANGUAGES",
+    icon: "</>",
     techs: [
       {
         name: "TypeScript",
@@ -29,10 +31,12 @@ const categories: Category[] = [
         name: "C/C++",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg",
       },
+      { name: "SQL", iconText: "SQL" },
     ],
   },
   {
     label: "FRONTEND",
+    icon: "🎨",
     techs: [
       {
         name: "Next.js",
@@ -43,65 +47,69 @@ const categories: Category[] = [
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
       },
       {
-        name: "Tailwind",
+        name: "Tailwind CSS",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
       },
-      { name: "Framer Motion", iconText: "FM" },
     ],
   },
   {
     label: "BACKEND",
+    icon: "⚙️",
     techs: [
       {
         name: "Node.js",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
       },
       {
-        name: "Express",
+        name: "Express.js",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
       },
-      { name: "REST API", iconText: "⚙" },
+      { name: "FastAPI", iconText: "F" },
+      { name: "REST APIs", iconText: "API" },
       { name: "WebSockets", iconText: "WS" },
+      { name: "Microservices", iconText: "MS" },
     ],
   },
   {
     label: "DATABASE",
+    icon: "🗄️",
     techs: [
-      {
-        name: "MongoDB",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-      },
       {
         name: "PostgreSQL",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
       },
       {
+        name: "MongoDB",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+      },
+      {
         name: "Redis",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
       },
+      { name: "Supabase", iconText: "SB" },
       { name: "Neo4j", iconText: "N4" },
       { name: "Qdrant", iconText: "QD" },
     ],
   },
   {
     label: "AI / ML",
+    icon: "🧠",
     techs: [
-      {
-        name: "PyTorch",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg",
-      },
-      {
-        name: "TensorFlow",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg",
-      },
       { name: "LangChain", iconText: "🦜" },
-      { name: "RAG", iconText: "AI" },
-      { name: "YOLOv8", iconText: "YO" },
+      { name: "LangGraph", iconText: "LG" },
+      { name: "OpenAI API", iconText: "AI" },
+      { name: "Gemini", iconText: "G" },
+      { name: "RAG", iconText: "RAG" },
     ],
   },
   {
-    label: "DEVOPS",
+    label: "CLOUD & DEVOPS",
+    icon: "🚀",
     techs: [
+      {
+        name: "AWS",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
+      },
       {
         name: "Docker",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
@@ -113,10 +121,6 @@ const categories: Category[] = [
       {
         name: "Linux",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg",
-      },
-      {
-        name: "Nginx",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg",
       },
     ],
   },
@@ -155,7 +159,8 @@ export default function TechStack() {
             key={cat.label}
             className="rounded-xl p-4 border border-white/[0.08] bg-white/[0.02]"
           >
-            <p className="text-xs font-semibold tracking-widest mb-3 text-white/30">
+            <p className="text-xs font-semibold tracking-widest mb-3 text-white/30 flex items-center gap-2">
+              <span>{cat.icon}</span>
               {cat.label}
             </p>
             <div className="flex flex-wrap gap-2">
