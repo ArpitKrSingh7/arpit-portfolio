@@ -3,13 +3,9 @@ import { personal, socialLinks } from "../lib/data";
 export default function QuickCall() {
   return (
     <section className="max-w-4xl w-full mx-auto px-4 py-10">
-      <div
-        className="rounded-xl overflow-hidden flex flex-col md:flex-row w-full border border-black/[0.08] dark:border-white/[0.08] transition-colors duration-500"
-      >
+      <div className="rounded-xl overflow-hidden flex flex-col md:flex-row w-full border border-black/[0.08] dark:border-white/[0.08] transition-colors duration-500">
         <div className="flex-1 p-8 bg-neutral-100 dark:bg-[#111]">
-          <span
-            className="text-xs font-semibold tracking-widest text-black/40 dark:text-white/40"
-          >
+          <span className="text-xs font-semibold tracking-widest text-black/40 dark:text-white/40">
             START HERE
           </span>
           <h2 className="text-2xl font-semibold text-black dark:text-white mt-2 mb-6 leading-tight">
@@ -36,7 +32,7 @@ export default function QuickCall() {
             </div>
             <div>
               <h3 className="text-sm font-medium mb-1 text-orange-400">
-                In Kancheepuram?
+                In Chennai?
               </h3>
               <p className="text-sm text-black/60 dark:text-white/60">
                 Perfect! Let&apos;s grab a coffee and brainstorm in person.
@@ -46,8 +42,7 @@ export default function QuickCall() {
         </div>
 
         <div className="flex-1 p-8 flex flex-col items-center justify-center text-center bg-neutral-50 dark:bg-[#0b1120]">
-          <div
-            className="w-16 h-16 rounded-full flex items-center justify-center mb-4" >
+          <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4">
             <svg
               viewBox="0 0 24 24"
               fill="none"
@@ -106,14 +101,10 @@ export default function QuickCall() {
               </svg>
             </a>
           </div>
-          <div
-            className="w-full mt-8 pt-6  border-t border-black/[0.06] dark:border-white/[0.06] transition-colors duration-500"
-          >
-            <p
-              className="text-xs italic font-serif text-black/40 dark:text-white/40"
-            >
-              &ldquo;Turning your vision into digital reality is just one conversation
-              away&rdquo;
+          <div className="w-full mt-8 pt-6  border-t border-black/[0.06] dark:border-white/[0.06] transition-colors duration-500">
+            <p className="text-xs italic font-serif text-black/40 dark:text-white/40">
+              &ldquo;Turning your vision into digital reality is just one
+              conversation away&rdquo;
             </p>
           </div>
         </div>

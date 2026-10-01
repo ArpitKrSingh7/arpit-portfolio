@@ -19,7 +19,7 @@ export default function Navbar() {
       <div className="w-full px-4 py-4 flex justify-between items-center max-w-4xl mx-auto">
         <div className="w-9" /> {/* Spacer for centering */}
         <span className="text-xs font-mono truncate text-center text-cyan-600 dark:text-cyan-400">
-          <Clock /> (GMT+5:30) IIITDM Kancheepuram, India
+          <Clock /> (GMT+5:30) IIITDM Kancheepuram, Chennai, India
         </span>
         <div className="w-9" /> {/* Spacer for centering */}
       </div>
