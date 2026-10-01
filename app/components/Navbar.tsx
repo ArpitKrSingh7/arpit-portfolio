@@ -1,25 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Clock from "./Clock";
+import { ThemeToggle } from "./ThemeToggle";
 
 export default function Navbar() {
-  const [time, setTime] = useState("");
   const pathname = usePathname();
-
-  useEffect(() => {
-    const update = () => {
-      const now = new Date();
-      const hh = String(now.getHours()).padStart(2, "0");
-      const mm = String(now.getMinutes()).padStart(2, "0");
-      const ss = String(now.getSeconds()).padStart(2, "0");
-      setTime(`${hh}:${mm}:${ss}`);
-    };
-    update();
-    const interval = setInterval(update, 1000);
-    return () => clearInterval(interval);
-  }, []);
 
   const navLinks = [
     { label: "Home", href: "/" },
@@ -28,42 +15,31 @@ export default function Navbar() {
   ];
 
   return (
-    <header
-      className="w-full sticky top-0 z-50 flex flex-col items-center"
-      style={{ backgroundColor: "#0a0a0a" }}
-    >
-      {/* Top bar: clock + location */}
-      <div className="w-full px-4 py-4 flex justify-center overflow-hidden">
-        <span
-          className="text-xs font-mono truncate text-center"
-          style={{ color: "#22d3ee" }}
-        >
-          {time} (GMT+5:30) Bihar Sharif, India
+    <header className="w-full sticky top-0 z-50 flex flex-col items-center bg-white dark:bg-[#0a0a0a] transition-colors duration-500">
+      {/* Top bar: clock + location + theme toggle */}
+      <div className="w-full px-4 py-4 flex justify-between items-center max-w-4xl mx-auto">
+        <div className="w-9" /> {/* Spacer for centering */}
+        <span className="text-xs font-mono truncate text-center text-cyan-600 dark:text-cyan-400">
+          <Clock /> (GMT+5:30) IIITDM Kancheepuram, India
         </span>
+        <ThemeToggle />
       </div>
 
       {/* Nav links */}
       <nav className="flex justify-center pb-3 w-full px-4">
-        <div
-          className="flex items-center gap-1 rounded-full px-2 py-1 max-w-full overflow-x-auto custom-scrollbar"
-          style={{
-            border: "1px solid rgba(255,255,255,0.1)",
-            backgroundColor: "rgba(255,255,255,0.04)",
-          }}
-        >
+        <div className="flex items-center gap-1 rounded-full px-2 py-1 max-w-full overflow-x-auto custom-scrollbar border border-neutral-200 dark:border-white/10 bg-neutral-100 dark:bg-white/5 transition-colors duration-500">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-4 py-1.5 rounded-full text-sm transition-colors duration-150 whitespace-nowrap"
-                style={{
-                  backgroundColor: isActive
-                    ? "rgba(255,255,255,0.1)"
-                    : "transparent",
-                  color: isActive ? "#ffffff" : "rgba(255,255,255,0.55)",
-                }}
+                className={`px-4 py-1.5 rounded-full text-sm transition-colors duration-150 whitespace-nowrap ${
+                  isActive
+                    ? "bg-white dark:bg-white/10 text-neutral-900 dark:text-white shadow-sm dark:shadow-none"
+                    : "text-neutral-500 dark:text-white/55 hover:text-neutral-900 dark:hover:text-white"
+                }`}
+                aria-current={isActive ? "page" : undefined}
               >
                 {link.label}
               </Link>

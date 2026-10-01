@@ -40,7 +40,7 @@ export default function AIAgentsPage() {
   return (
     <main
       className="min-h-screen selection:bg-cyan-500/30 flex flex-col"
-      style={{ backgroundColor: "#0a0a0a" }}
+      
     >
       <Navbar />
       <script

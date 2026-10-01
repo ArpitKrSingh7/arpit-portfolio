@@ -10,7 +10,7 @@ export default function BlogsPage() {
   return (
     <main
       className="min-h-screen selection:bg-cyan-500/30 flex flex-col"
-      style={{ backgroundColor: "#0a0a0a" }}
+      
     >
       <Navbar />
       <div className="flex-1 w-full flex items-center justify-center px-4">

@@ -1,11 +1,12 @@
 import Link from "next/link";
+import Image from "next/image";
 import { personal, socialLinks } from "../lib/data";
 
 const socialItems = [
   {
     label: "GitHub",
     href: socialLinks.github,
-    colorClass: "text-white/50 hover:text-white",
+    colorClass: "text-black/50 dark:text-white/50 hover:text-black dark:hover:text-white",
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
         <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
@@ -15,7 +16,7 @@ const socialItems = [
   {
     label: "X",
     href: socialLinks.x,
-    colorClass: "text-white/50 hover:text-white",
+    colorClass: "text-black/50 dark:text-white/50 hover:text-black dark:hover:text-white",
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -78,20 +79,23 @@ export default function Intro() {
   return (
     <section className="max-w-4xl w-full mx-auto px-4 pt-12 pb-6 space-y-4">
       {/* Profile Card */}
-      <div className="rounded-xl p-5 border border-white/[0.08] bg-white/[0.03]">
+      <div className="rounded-xl p-5 border border-black/[0.08] dark:border-white/[0.08] bg-black/[0.03] dark:bg-white/[0.03] transition-colors duration-500">
         <div className="flex flex-wrap sm:flex-nowrap items-start justify-between gap-6">
           <div className="flex gap-4 w-full sm:w-auto">
-            <div className="w-20 h-28 sm:w-20 sm:h-28 rounded-lg flex-shrink-0 overflow-hidden bg-[#1a1a1a]">
-              <img
+            <div className="w-20 h-28 sm:w-20 sm:h-28 rounded-lg flex-shrink-0 overflow-hidden bg-neutral-200 dark:bg-[#1a1a1a] relative transition-colors duration-500">
+              <Image
                 src="/iiitdm_Card.jpeg"
-                alt="Profile"
-                className="w-full h-full object-cover"
+                alt="Arpit Kumar Singh - Full-Stack & GenAI Engineer"
+                fill
+                sizes="80px"
+                className="object-cover"
+                priority
               />
             </div>
 
             <div className="space-y-1.5 min-w-0 pt-1">
               <div className="flex items-center gap-2.5 flex-wrap">
-                <h1 className="text-xl font-bold text-white tracking-wide">
+                <h1 className="text-xl font-bold text-black dark:text-white tracking-wide">
                   {personal.shortName}
                 </h1>
                 <span className="text-[10px] px-2 py-0.5 rounded-full font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20 flex items-center gap-1.5">
@@ -100,11 +104,11 @@ export default function Intro() {
                 </span>
               </div>
 
-              <div className="text-sm text-white/60 font-medium">
+              <div className="text-sm text-black/60 dark:text-white/60 font-medium">
                 {personal.title}
               </div>
 
-              <div className="flex items-center gap-1.5 text-sm text-white/45 truncate mt-1">
+              <div className="flex items-center gap-1.5 text-sm text-black/45 dark:text-white/45 truncate mt-1">
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
@@ -117,7 +121,7 @@ export default function Intro() {
                 </svg>
                 <a
                   href={`mailto:${personal.email}`}
-                  className="hover:text-white transition-colors truncate"
+                  className="hover:text-black dark:hover:text-white transition-colors truncate"
                 >
                   {personal.email}
                 </a>
@@ -133,6 +137,7 @@ export default function Intro() {
                 target="_blank"
                 rel="noopener noreferrer"
                 title={s.label}
+                aria-label={s.label}
                 className={`transition-all duration-200 ${s.colorClass}`}
               >
                 {s.icon}
@@ -141,19 +146,19 @@ export default function Intro() {
           </div>
         </div>
 
-        <div className="my-5 border-t border-white/[0.07]" />
+        <div className="my-5 border-t border-black/[0.07] dark:border-white/[0.07]" />
 
-        <div className="space-y-3 text-sm leading-relaxed text-white/70">
+        <div className="space-y-3 text-sm leading-relaxed text-black/70 dark:text-white/70">
           <p>
             Hi, I&apos;m{" "}
-            <strong className="text-white font-semibold">
+            <strong className="text-black dark:text-white font-semibold">
               {personal.shortName}
             </strong>
             , a full-stack & GenAI engineer from <span>🇮🇳</span> India.
           </p>
           <p>
             I build end-to-end products that{" "}
-            <strong className="text-white font-semibold">
+            <strong className="text-black dark:text-white font-semibold">
               scale and ship on time
             </strong>
             . From RAG pipelines to production web platforms, I craft systems
@@ -165,14 +170,14 @@ export default function Intro() {
               href={socialLinks.x}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white hover:underline transition-colors"
+              className="text-black dark:text-white hover:underline transition-colors"
             >
               <strong className="font-semibold">𝕏 DMs</strong>
             </a>{" "}
             or{" "}
             <a
               href={`mailto:${personal.email}`}
-              className="text-white hover:underline transition-colors"
+              className="text-black dark:text-white hover:underline transition-colors"
             >
               <strong className="font-semibold">Email</strong>
             </a>
@@ -182,8 +187,8 @@ export default function Intro() {
       </div>
 
       {/* AI Agent Banner */}
-      <div className="rounded-xl px-5 py-3.5 flex items-center justify-between border border-white/[0.08] bg-white/[0.03] overflow-hidden gap-4 mt-2">
-        <span className="text-sm text-white/50 truncate">
+      <div className="rounded-xl px-5 py-3.5 flex items-center justify-between border border-black/[0.08] dark:border-white/[0.08] bg-black/[0.03] dark:bg-white/[0.03] overflow-hidden gap-4 mt-2 transition-colors duration-500">
+        <span className="text-sm text-black/50 dark:text-white/50 truncate">
           AI agent reading this portfolio?
         </span>
         <Link

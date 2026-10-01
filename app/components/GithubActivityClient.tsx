@@ -8,12 +8,12 @@ export type ContributionDay = {
   level: 0 | 1 | 2 | 3 | 4;
 };
 
-const levelColors: Record<number, string> = {
-  0: "rgba(255,255,255,0.05)",
-  1: "rgba(34,197,94,0.35)",
-  2: "rgba(34,197,94,0.55)",
-  3: "rgba(34,197,94,0.75)",
-  4: "rgba(34,197,94,0.95)",
+const levelClasses: Record<number, string> = {
+  0: "bg-black/5 dark:bg-white/5",
+  1: "bg-emerald-500/35 dark:bg-emerald-500/35",
+  2: "bg-emerald-500/55 dark:bg-emerald-500/55",
+  3: "bg-emerald-500/75 dark:bg-emerald-500/75",
+  4: "bg-emerald-500/95 dark:bg-emerald-500/95",
 };
 
 const MONTHS = [
@@ -70,8 +70,8 @@ export default function GithubActivityClient({
     <section className="max-w-4xl w-full mx-auto px-4 py-10">
       <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h2 className="text-xl font-semibold text-white">GitHub Activity</h2>
-          <p className="text-sm mt-1 text-white/40">
+          <h2 className="text-xl font-semibold text-black dark:text-white">GitHub Activity</h2>
+          <p className="text-sm mt-1 text-black/40 dark:text-white/40">
             {total.toLocaleString()} contributions in the last year
           </p>
         </div>
@@ -79,32 +79,31 @@ export default function GithubActivityClient({
           href={profileUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xs transition-colors duration-150 hover:text-white/70"
-          style={{ color: "rgba(255,255,255,0.35)" }}
+          className="text-xs transition-colors duration-150 hover:text-black/70 dark:hover:text-white/70 text-black/35 dark:text-white/35"
         >
           @{username} on GitHub →
         </a>
       </div>
 
-      <div className="w-full rounded-xl p-5 border border-white/[0.08] bg-white/[0.02]">
+      <div className="w-full rounded-xl p-5 border border-black/[0.08] dark:border-white/[0.08] bg-black/[0.02] dark:bg-white/[0.02] transition-colors duration-500">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
-          <div className="rounded-lg p-3 bg-white/[0.03] border border-white/[0.06]">
-            <p className="text-xs text-white/40 mb-1">Contributions</p>
-            <p className="text-xl font-semibold text-white">
+          <div className="rounded-lg p-3 bg-black/[0.03] dark:bg-white/[0.03] border border-black/[0.06] dark:border-white/[0.06] transition-colors duration-500">
+            <p className="text-xs text-black/40 dark:text-white/40 mb-1">Contributions</p>
+            <p className="text-xl font-semibold text-black dark:text-white">
               {total.toLocaleString()}
             </p>
           </div>
-          <div className="rounded-lg p-3 bg-white/[0.03] border border-white/[0.06]">
-            <p className="text-xs text-white/40 mb-1">Current Streak</p>
-            <p className="text-xl font-semibold text-white">{currentStreak}d</p>
+          <div className="rounded-lg p-3 bg-black/[0.03] dark:bg-white/[0.03] border border-black/[0.06] dark:border-white/[0.06] transition-colors duration-500">
+            <p className="text-xs text-black/40 dark:text-white/40 mb-1">Current Streak</p>
+            <p className="text-xl font-semibold text-black dark:text-white">{currentStreak}d</p>
           </div>
-          <div className="rounded-lg p-3 bg-white/[0.03] border border-white/[0.06]">
-            <p className="text-xs text-white/40 mb-1">Longest Streak</p>
-            <p className="text-xl font-semibold text-white">{longestStreak}d</p>
+          <div className="rounded-lg p-3 bg-black/[0.03] dark:bg-white/[0.03] border border-black/[0.06] dark:border-white/[0.06] transition-colors duration-500">
+            <p className="text-xs text-black/40 dark:text-white/40 mb-1">Longest Streak</p>
+            <p className="text-xl font-semibold text-black dark:text-white">{longestStreak}d</p>
           </div>
-          <div className="rounded-lg p-3 bg-white/[0.03] border border-white/[0.06]">
-            <p className="text-xs text-white/40 mb-1">Repos · Followers</p>
-            <p className="text-xl font-semibold text-white">
+          <div className="rounded-lg p-3 bg-black/[0.03] dark:bg-white/[0.03] border border-black/[0.06] dark:border-white/[0.06] transition-colors duration-500">
+            <p className="text-xs text-black/40 dark:text-white/40 mb-1">Repos · Followers</p>
+            <p className="text-xl font-semibold text-black dark:text-white">
               {publicRepos} · {followers}
             </p>
           </div>
@@ -125,7 +124,7 @@ export default function GithubActivityClient({
                     style={{ width: "11px" }}
                   >
                     {label && (
-                      <span className="text-[10px] whitespace-nowrap text-white/30">
+                      <span className="text-[10px] whitespace-nowrap text-black/30 dark:text-white/30">
                         {label.label}
                       </span>
                     )}
@@ -143,11 +142,10 @@ export default function GithubActivityClient({
                   {week.map((day, di) => (
                     <div
                       key={di}
-                      className="rounded-sm cursor-pointer transition-all duration-100 hover:ring-1 hover:ring-white/30"
+                      className={`rounded-sm cursor-pointer transition-all duration-100 hover:ring-1 hover:ring-black/30 dark:hover:ring-white/30 ${levelClasses[day.level]}`}
                       style={{
                         width: "11px",
                         height: "11px",
-                        backgroundColor: levelColors[day.level],
                       }}
                       onMouseEnter={(e) => {
                         setTooltip({
@@ -172,16 +170,15 @@ export default function GithubActivityClient({
           </div>
         </div>
 
-        <div className="mt-4 flex items-center gap-3 text-xs text-white/40">
+        <div className="mt-4 flex items-center gap-3 text-xs text-black/40 dark:text-white/40">
           <span>Less</span>
           {[0, 1, 2, 3, 4].map((level) => (
             <div
               key={level}
-              className="rounded-sm"
+              className={`rounded-sm ${levelClasses[level]}`}
               style={{
                 width: "11px",
                 height: "11px",
-                backgroundColor: levelColors[level],
               }}
             />
           ))}
@@ -193,11 +190,11 @@ export default function GithubActivityClient({
         <div
           className="fixed z-50 px-2 py-1 rounded text-xs pointer-events-none"
           style={{
-            left: tooltip.x,
+            left: typeof window !== 'undefined' ? Math.max(80, Math.min(window.innerWidth - 80, tooltip.x)) : tooltip.x,
             top: tooltip.y,
-            backgroundColor: "#171717",
-            border: "1px solid rgba(255,255,255,0.12)",
-            color: "rgba(255,255,255,0.9)",
+            backgroundColor: "var(--tooltip-bg, #171717)",
+            border: "1px solid var(--tooltip-border, rgba(255,255,255,0.12))",
+            color: "var(--tooltip-color, rgba(255,255,255,0.9))",
             transform: "translateX(-50%)",
           }}
         >

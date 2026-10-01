@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type Tech = {
   name: string;
   icon?: string;
@@ -128,12 +130,15 @@ const categories: Category[] = [
 
 function TechBadge({ tech }: { tech: Tech }) {
   return (
-    <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm cursor-default transition-colors duration-150 bg-white/5 border border-white/[0.08] text-white/75 hover:bg-white/10 hover:text-white">
+    <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm cursor-default transition-colors duration-150 bg-black/5 dark:bg-white/5 border border-black/[0.08] dark:border-white/[0.08] text-black/75 dark:text-white/75 hover:bg-black/10 dark:bg-white/10 hover:text-black dark:hover:text-white">
       {tech.icon ? (
-        <img
+        <Image
           src={tech.icon}
           alt={tech.name}
+          width={16}
+          height={16}
           className="w-4 h-4 object-contain"
+          unoptimized
         />
       ) : (
         <span className="w-4 h-4 text-xs flex items-center justify-center text-cyan-400">
@@ -149,17 +154,17 @@ export default function TechStack() {
   return (
     <section className="max-w-4xl w-full mx-auto px-4 py-10">
       <div className="mb-6">
-        <h2 className="text-xl font-semibold text-white">Tech Stack</h2>
-        <p className="text-sm mt-1 text-white/40">Technologies I work with</p>
+        <h2 className="text-xl font-semibold text-black dark:text-white">Tech Stack</h2>
+        <p className="text-sm mt-1 text-black/40 dark:text-white/40">Technologies I work with</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {categories.map((cat) => (
           <div
             key={cat.label}
-            className="rounded-xl p-4 border border-white/[0.08] bg-white/[0.02]"
+            className="rounded-xl p-4 border border-black/[0.08] dark:border-white/[0.08] bg-black/[0.02] dark:bg-white/[0.02] transition-colors duration-500"
           >
-            <p className="text-xs font-semibold tracking-widest mb-3 text-white/30 flex items-center gap-2">
+            <p className="text-xs font-semibold tracking-widest mb-3 text-black/30 dark:text-white/30 flex items-center gap-2">
               <span>{cat.icon}</span>
               {cat.label}
             </p>
