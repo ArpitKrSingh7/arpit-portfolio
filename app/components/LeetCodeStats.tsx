@@ -17,7 +17,7 @@ export default async function LeetCodeStats() {
           href={socialLinks.leetcode}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xs text-black/35 dark:text-white/35 hover:text-black/70 dark:text-white/70 transition-colors duration-150"
+          className="text-xs text-black/35 dark:text-white/35 hover:text-black/70 dark:hover:text-white/70 transition-colors duration-150"
         >
           @{stats?.username || "Arpitkrsingh"} on LeetCode →
         </a>

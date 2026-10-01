@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: "%s | Arpit Kumar Singh",
   },
   description:
-    "Portfolio of Arpit Kumar Singh — Full-Stack & GenAI Engineer building scalable web apps, RESTful APIs, microservices, and RAG-powered systems.",
+    "Explore the portfolio of Arpit Kumar Singh, a Full-Stack & GenAI Engineer specializing in scalable web apps, sophisticated RAG pipelines, and high-performance microservices.",
   keywords: [
     "Arpit Kumar Singh",
     "Full-Stack Developer",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Arpit Kumar Singh | Full-Stack & GenAI Engineer",
     description:
-      "Portfolio of Arpit Kumar Singh — Full-Stack & GenAI Engineer building scalable web apps, RESTful APIs, microservices, and RAG-powered systems.",
+      "Explore the portfolio of Arpit Kumar Singh, a Full-Stack & GenAI Engineer specializing in scalable web apps, sophisticated RAG pipelines, and high-performance microservices.",
     url: "https://arpitdev.blog",
     siteName: "Arpit Kumar Singh",
     locale: "en_US",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Arpit Kumar Singh | Full-Stack & GenAI Engineer",
     description:
-      "Portfolio of Arpit Kumar Singh — Full-Stack & GenAI Engineer building scalable web apps and RAG-powered systems.",
+      "Explore the portfolio of Arpit Kumar Singh, a Full-Stack & GenAI Engineer specializing in scalable web apps, sophisticated RAG pipelines, and high-performance microservices.",
     creator: "@ArpitKrSingh7",
   },
   robots: {
@@ -75,12 +75,20 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-white dark:bg-[#0a0a0a] text-neutral-900 dark:text-white transition-colors duration-500">
+      <body className="min-h-full flex flex-col bg-[#050505] text-white">
+        {/* Subtle grid background */}
+        <div className="fixed inset-0 z-[-1] pointer-events-none" 
+             style={{
+               backgroundImage: `linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px)`,
+               backgroundSize: `40px 40px`,
+               maskImage: `radial-gradient(ellipse 80% 80% at 50% 0%, #000 70%, transparent 110%)`
+             }} 
+        />
         <ThemeProvider
           attribute="data-theme"
           defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange={false}
+          forcedTheme="dark"
+          disableTransitionOnChange={true}
         >
           {children}
         </ThemeProvider>

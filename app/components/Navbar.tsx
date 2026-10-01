@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Clock from "./Clock";
-import { ThemeToggle } from "./ThemeToggle";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -22,7 +21,7 @@ export default function Navbar() {
         <span className="text-xs font-mono truncate text-center text-cyan-600 dark:text-cyan-400">
           <Clock /> (GMT+5:30) IIITDM Kancheepuram, India
         </span>
-        <ThemeToggle />
+        <div className="w-9" /> {/* Spacer for centering */}
       </div>
 
       {/* Nav links */}

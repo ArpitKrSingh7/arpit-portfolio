@@ -81,13 +81,13 @@ export default function Intro() {
       {/* Profile Card */}
       <div className="rounded-xl p-5 border border-black/[0.08] dark:border-white/[0.08] bg-black/[0.03] dark:bg-white/[0.03] transition-colors duration-500">
         <div className="flex flex-wrap sm:flex-nowrap items-start justify-between gap-6">
-          <div className="flex gap-4 w-full sm:w-auto">
-            <div className="w-20 h-28 sm:w-20 sm:h-28 rounded-lg flex-shrink-0 overflow-hidden bg-neutral-200 dark:bg-[#1a1a1a] relative transition-colors duration-500">
+          <div className="flex gap-5 w-full sm:w-auto">
+            <div className="w-24 h-32 sm:w-28 sm:h-36 rounded-lg flex-shrink-0 overflow-hidden bg-neutral-200 dark:bg-[#1a1a1a] relative transition-colors duration-500">
               <Image
                 src="/iiitdm_Card.jpeg"
                 alt="Arpit Kumar Singh - Full-Stack & GenAI Engineer"
                 fill
-                sizes="80px"
+                sizes="112px"
                 className="object-cover"
                 priority
               />
