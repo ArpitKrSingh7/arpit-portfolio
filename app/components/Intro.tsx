@@ -95,8 +95,9 @@ export default function Intro() {
 
             <div className="space-y-1.5 min-w-0 pt-1">
               <div className="flex items-center gap-2.5 flex-wrap">
-                <h1 className="text-xl font-bold text-black dark:text-white tracking-wide">
+                <h1 className="text-xl font-bold text-black dark:text-white tracking-wide flex items-center gap-2">
                   {personal.shortName}
+                  <span className="hidden sm:inline text-sm font-normal text-black/50 dark:text-white/50">| IIITDM Kancheepuram</span>
                 </h1>
                 <span className="text-[10px] px-2 py-0.5 rounded-full font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20 flex items-center gap-1.5">
                   <span className="w-1 h-1 rounded-full bg-blue-400"></span>
@@ -152,9 +153,13 @@ export default function Intro() {
           <p>
             Hi, I&apos;m{" "}
             <strong className="text-black dark:text-white font-semibold">
-              {personal.shortName}
+              Arpit Kumar Singh
             </strong>
-            , a full-stack & GenAI engineer from <span>🇮🇳</span> India.
+            , a full-stack & GenAI engineer and a proud graduate of{" "}
+            <strong className="text-black dark:text-white font-semibold">
+              IIITDM Kancheepuram
+            </strong>
+            , based in <span>🇮🇳</span> India.
           </p>
           <p>
             I build end-to-end products that{" "}

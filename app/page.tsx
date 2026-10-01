@@ -66,7 +66,11 @@ export default function Home() {
               ],
               alumniOf: {
                 "@type": "CollegeOrUniversity",
-                name: "IIITDM Kancheepuram",
+                name: "Indian Institute of Information Technology Design & Manufacturing (IIITDM) Kancheepuram",
+                sameAs: [
+                  "https://www.iiitdm.ac.in/",
+                  "https://en.wikipedia.org/wiki/Indian_Institute_of_Information_Technology,_Design_and_Manufacturing,_Kancheepuram"
+                ]
               },
               knowsAbout: [
                 "Full-Stack Development",

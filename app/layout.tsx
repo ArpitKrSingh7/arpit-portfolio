@@ -15,30 +15,36 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://arpitdev.blog"),
+  alternates: {
+    canonical: '/',
+  },
   title: {
-    default: "Arpit Kumar Singh | Full-Stack & GenAI Engineer",
+    default: "Arpit Kumar Singh | IIITDM | Full-Stack & GenAI Engineer",
     template: "%s | Arpit Kumar Singh",
   },
   description:
-    "Explore the portfolio of Arpit Kumar Singh, a Full-Stack & GenAI Engineer specializing in scalable web apps, sophisticated RAG pipelines, and high-performance microservices.",
+    "Explore the portfolio of Arpit Kumar Singh, a graduate of IIITDM Kancheepuram, Full-Stack & GenAI Engineer specializing in scalable web apps, sophisticated RAG pipelines, and high-performance microservices.",
   keywords: [
     "Arpit Kumar Singh",
+    "Arpit Kumar Singh IIITDM",
+    "Arpit IIITDM",
+    "IIITDM Kancheepuram",
+    "IIITDM graduate",
     "Full-Stack Developer",
     "GenAI Engineer",
     "Next.js",
     "Node.js",
     "TypeScript",
     "RAG",
-    "IIITDM Kancheepuram",
     "portfolio",
     "web developer",
   ],
   authors: [{ name: "Arpit Kumar Singh" }],
   creator: "Arpit Kumar Singh",
   openGraph: {
-    title: "Arpit Kumar Singh | Full-Stack & GenAI Engineer",
+    title: "Arpit Kumar Singh | IIITDM | Full-Stack & GenAI Engineer",
     description:
-      "Explore the portfolio of Arpit Kumar Singh, a Full-Stack & GenAI Engineer specializing in scalable web apps, sophisticated RAG pipelines, and high-performance microservices.",
+      "Explore the portfolio of Arpit Kumar Singh, a graduate of IIITDM Kancheepuram, Full-Stack & GenAI Engineer specializing in scalable web apps, sophisticated RAG pipelines, and high-performance microservices.",
     url: "https://arpitdev.blog",
     siteName: "Arpit Kumar Singh",
     locale: "en_US",
@@ -46,9 +52,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Arpit Kumar Singh | Full-Stack & GenAI Engineer",
+    title: "Arpit Kumar Singh | IIITDM | Full-Stack & GenAI Engineer",
     description:
-      "Explore the portfolio of Arpit Kumar Singh, a Full-Stack & GenAI Engineer specializing in scalable web apps, sophisticated RAG pipelines, and high-performance microservices.",
+      "Explore the portfolio of Arpit Kumar Singh, a graduate of IIITDM Kancheepuram, Full-Stack & GenAI Engineer specializing in scalable web apps, sophisticated RAG pipelines, and high-performance microservices.",
     creator: "@ArpitKrSingh7",
   },
   robots: {
